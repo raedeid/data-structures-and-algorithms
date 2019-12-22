@@ -13,7 +13,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 };
 
 const getCourseKeys = (obj) => {
-  // Solution code here...
+  return Object.keys(obj)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -70,7 +70,9 @@ let characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  for(let i=0;i<arr.length;i++){
+    houses.push(arr[i].house)
+  }
   return houses;
 };
 
@@ -87,8 +89,13 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
-
+  for(let i=0;i<arr.length;i++){
+    let output = Object.values(arr[i]);
+    if(output[0] === character && output[2]){
+      return true ;
+  }
+}
+return false ;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -100,7 +107,14 @@ The input and output of this function are the same as the input and output from 
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenEntries = (arr, character) => {
-  // Solution code here...
+    for(let i=0;i<1;i++){
+      let output = Object.entries(arr[i]);
+      // console.log(output)
+      if(output[0][1] === character && output[2][1]){
+        return true ;
+    }
+  }
+    return false ;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -110,7 +124,20 @@ Write a function named totalCharacters that takes in an array and returns the nu
 ------------------------------------------------------------------------------------------------ */
 
 const totalCharacters = (arr) => {
-  // Solution code here...
+  let total_names = 0
+  for(let i=0;i<arr.length;i++){
+    delete arr[i].house
+    let output = Object.values(arr[i])
+    for(let w=0;w<output.length;w++){
+      if (typeof(output[w]) === 'object' && output[w]){
+        total_names = total_names + output[w].length
+      }else if(output[w]!== null){
+        total_names ++
+      }
+
+    }
+  }
+  return total_names
 };
 
 /* ------------------------------------------------------------------------------------------------
