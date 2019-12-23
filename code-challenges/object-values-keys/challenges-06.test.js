@@ -134,7 +134,6 @@ const totalCharacters = (arr) => {
       }else if(output[w]!== null){
         total_names ++
       }
-
     }
   }
   return total_names
