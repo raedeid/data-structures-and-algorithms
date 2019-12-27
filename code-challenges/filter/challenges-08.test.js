@@ -9,7 +9,12 @@ For example, oddValues([1,2,3]) returns [1,3].
 ------------------------------------------------------------------------------------------------ */
 
 const oddValues = (arr) => {
-  // Solution code here...
+  let update = arr.filter(element =>{
+    if(element % 2 !== 0){
+      return element
+    }
+  })
+  return update 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -24,7 +29,13 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 
 const filterStringsWithVowels = (arr) => {
-  // Solution code here...
+  let output = arr.filter(element=>{
+    let regex = /[aeiouAEIOU]/
+    if (regex.test(element)){
+      return element ;
+    }
+  })
+  return output;
 };
 
 
@@ -37,7 +48,13 @@ For example, notInFirstArray([1,2,3], [1,2,3,4]) returns [4].
 ------------------------------------------------------------------------------------------------ */
 
 const notInFirstArray = (forbiddenValues, arr) => {
-  // Solution code here...
+  let output = arr.filter(element =>{
+    if(!(forbiddenValues.includes(element))){
+      return element ; 
+    }
+  })
+  return output
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,7 +97,12 @@ const snorlaxData = {
 };
 
 const getBaseStatGreaterThan = (arr, minBaseStat) => {
-  // Solution code here...
+  let output = arr.filter(element =>{
+    if (element.baseStat > minBaseStat){
+      return element
+    }
+  })
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,7 +114,14 @@ For example, getStatName(snorlaxData.stats, 50) will return ['special-defense', 
 ------------------------------------------------------------------------------------------------ */
 
 const getStatName = (arr, minBaseStat) => {
-  // Solution code here...
+  let result = [] ;
+  let output = arr.filter(element =>{
+    if (element.baseStat > minBaseStat){
+      // console.log(element.stat.name)
+      result.push(element.stat.name) ;
+    }
+  })
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -145,7 +174,12 @@ const characters = [
 ];
 
 const getCharactersWithoutChildren = (arr) => {
-  // Solution code here...
+  let output = arr.filter(element =>{
+    if(!(element.children)){
+      return element
+    }
+  })
+  return output 
 };
 
 /* ------------------------------------------------------------------------------------------------
