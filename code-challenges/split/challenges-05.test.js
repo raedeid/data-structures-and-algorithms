@@ -77,7 +77,7 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  let request = gruffaloCrumble.ingredients
+  let request = recipe.ingredients
   for (let i=0;i<request.length;i++){
         result.push(request[i].slice(request[i].indexOf(' ',2)+1,request[i].length))
   }
@@ -95,9 +95,16 @@ You may also use other string or array methods.
 
 const splitFoods = (recipe) => {
   let result = [];
-  // Solution code here...
+  let request = recipe.ingredients
+  for (let i=0;i<request.length;i++){
+    let output = request[i].split(' ');
+    let output_manu = output.slice(2,request[i].length);
+    result.push(output_manu.join(' '));
+  }
+  
   return result;
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -111,7 +118,11 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 
 const stepActions = (recipe) => {
   let result = [];
-  // Solution code here...
+  let request = recipe.steps
+  for (let i=0;i<request.length;i++){
+    let output = request[i].split(' ',1);
+    result.push(output.join(''))
+  }
   return result;
 };
 
@@ -129,7 +140,14 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const removeEvenValues = (arr) => {
-  // Solution code here...
+  // let result = []
+  arr.forEach(element =>{
+    if(element % 2 !== 0){
+      // console.log(arr.indexOf(element))
+      arr.splice(arr.indexOf(element)+1,1)
+    }
+  })
+  return arr
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -148,7 +166,10 @@ removeLastCharacters('Gregor', 9) returns ''
 ------------------------------------------------------------------------------------------------ */
 
 const removeLastCharacters = (str, numberOfCharacters) => {
-  // Solution code here...
+  let output = str.split('')
+  output.splice(output.length,numberOfCharacters)
+  return output.join('')
+
 };
 
 
