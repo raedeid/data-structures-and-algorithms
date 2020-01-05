@@ -13,7 +13,14 @@ For example:
 ------------------------------------------------------------------------------------------------ */
 
 const isNum = (input) => {
-    
+  let regex = /[0-9]/
+  let output = `${input}` 
+  if(output.match(regex)){
+    return true
+  }
+  else {
+    return false
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -25,7 +32,17 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  // Solution code here...
+  let regex = /[A-Z]/
+  let output = [] 
+  str = str.split(' ')
+  str.forEach(word =>{
+    if(word.match(regex)){
+     word = word.replace(')',''); 
+     word = word.replace('.','')
+     output.push(word.replace(',',''));
+    }  
+  })
+return output
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,7 +52,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  let regex = /[A-J].*$/
+  let output = [] 
+  arr.forEach(word =>{
+    if(word.replace(' ','').match(regex)){
+     output.push(word);
+    }  
+  })
+return output
 };
 
 /* ------------------------------------------------------------------------------------------------
