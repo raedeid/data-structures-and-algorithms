@@ -43,7 +43,10 @@ For example, (123) 456-7890 returns 1234567890
 ------------------------------------------------------------------------------------------------ */
 
 const standardizePhoneNumbers = (arr) => {
-
+  let output = arr.map(element =>{
+    return element.replace(/[^0-9]/,'')
+  })
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,7 +58,13 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  str = str.split('')
+  let output = str.filter((element)=>{
+    if(str.indexOf(element)%2!=0){
+      return element
+    }
+  })
+  return output.join('')
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -65,7 +74,15 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  let output = arr.map(element =>{
+    if(element.includes(':)')){
+      return true 
+    }else {
+      return false
+    }
+  })
+  if (output.includes(false)){return false}
+  else {return true} 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -75,7 +92,12 @@ Write a function named findAnything that takes in an array of strings, along wit
 ------------------------------------------------------------------------------------------------ */
 
 const findAnything = (arr, target) => {
-  // Solution code here...
+  let output = arr.filter(element =>{
+    if(element.includes(target)){
+      return element
+    }
+  })
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,7 +107,12 @@ Write a function named findEvery that takes in an array of strings, along with a
 ------------------------------------------------------------------------------------------------ */
 
 const findEvery = (arr, target) => {
-  // Solution code here...
+  let output = arr.map(element =>{
+    if(element.includes(target)){return true}
+    else {return false}
+  })
+  if (output.includes(false)){return false}
+  else {return true} 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -101,7 +128,15 @@ For example, [['Brook Testing', 'Actual Person'], ['Human Person', 'Brook again'
 ------------------------------------------------------------------------------------------------ */
 
 const unenrollBrook = (arr) => {
-  // Solution code here...
+  let output = arr.map(list =>{
+    let checker = list.filter(string =>{
+      if(!(string.includes('Brook'))){
+        return string
+      }
+    })
+    return checker
+  })
+  return output
 };
 
 /* ------------------------------------------------------------------------------------------------
