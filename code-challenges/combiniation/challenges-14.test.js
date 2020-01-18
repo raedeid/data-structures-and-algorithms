@@ -87,13 +87,18 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
+  let name = ''
   let output = arr.filter(element =>{
-    if(parsInt(element.mass)> 77 ){
-      return element
+    // console.log(element.mass)
+    if(element.mass > 77 ){
+      // console.log(element.mass)
+      name = name + element.name + ' - '
     }
   })
-  return output
+  return name.slice(0,name.length-3)
 };
+
+// console.log(biggerThanLuke(starWarsData))
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -114,17 +119,17 @@ const sortBy = (property, arr) => {
   if(property === 'name'){
     arr.sort((a,b) =>{
       // console.log(a.property,b.property)
-      if(a.property<b.property){
+      if(a[`${property}`]<b[`${property}`]){
         return -1
         };
-      if(a.property>b.property){
+      if(a[`${property}`]>b[`${property}`]){
         return 1
         };  
     });  
   }else{
     arr.sort((a,b)=>{
-      console.log(a.property)
-      return a.property - b.property 
+      // console.log(a[`${property}`])
+      return a[`${property}`] - b[`${property}`] 
     })
   }
   return arr
@@ -168,9 +173,28 @@ Here is a sample board:
   ['X', 'O', 'X'],
 ];
 ------------------------------------------------------------------------------------------------ */
-
+let checker = function (a,b,c){
+  if(a === b === c){
+    return false 
+  }else {
+    return true
+  }
+}
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+    for(let i=0;i<board.length;i++){
+      let row = board[i]
+      if(checker(row[0],row[1],row[2])){
+        for(let w=0;w<board[i].length;w++){
+          if(checker(board[i][w],board[i+1][w],board[i+2][w])){
+            if(i === 0 && w===0 ||w===2){
+              if(checker(board[i][w],board[i+1][w+1],board[i+2][w+2])){
+              }else{return `the ${board[i][w]} is winner`}
+            }
+            
+          }else{return `the ${board[i][w]} is winner`}
+        }
+      }else{return `the ${row[0]} is winner`}
+    } 
 };
 
 /* ------------------------------------------------------------------------------------------------
